@@ -1,2 +1,4 @@
-exec start-stop-daemon --start --cd <%= node['minecraft']['dir'] %> --chuid <%= node['minecraft']['user'] %> \
+ #!/bin/sh
+ cd <%= node['minecraft']['dir'] %>
+ exec /usr/bin/java <%= node['minecraft']['ram'] %>  -jar minecraft_server.<%= node['minecraft']['version'] %>.jar nogui
   
