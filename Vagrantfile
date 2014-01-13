@@ -20,11 +20,13 @@ Vagrant.configure("2") do |config|
   # any other machines on the same network, but cannot be accessed (through this
   # network interface) by any external networks.
   config.vm.network :private_network, ip: "33.33.33.10"
-  config.vm.forward_port 80, 25565
+  config.vm.network "forwarded_port", guest: 25565, host: 25565
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
   # your network.
-
+  config.vm.provider "virtualbox" do |v|
+      v.memory = 1024
+  end
   # config.vm.network :public_network
 
   # Create a forwarded port mapping which allows access to a specific port
@@ -43,10 +45,10 @@ Vagrant.configure("2") do |config|
   #
   # config.vm.provider :virtualbox do |vb|
   #   # Don't boot with headless mode
-  #   vb.gui = true
+  #   vb.gui = false
   #
   #   # Use VBoxManage to customize the VM. For example to change memory:
-  #   vb.customize ["modifyvm", :id, "--memory", "1024"]
+  #   vb.customize ["modifyvm", :id, "--memory", "2048"]
   # end
   #
   # View the documentation for the provider you're using for more
