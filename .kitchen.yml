@@ -10,6 +10,8 @@ platforms:
   driver_config:
     box: opscode-ubuntu-12.04
     box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box
+  network:
+    - ['private_network', {ip: '192.168.33.33'}]
 
 suites:
 - name: default
